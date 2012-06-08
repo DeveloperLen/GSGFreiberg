@@ -1,6 +1,10 @@
 package com.rojel.gsgfreiberg;
 
-public class Lesson {
+import java.io.Serializable;
+
+public class Lesson implements Serializable {
+	private static final long serialVersionUID = -1736056634405169142L;
+	
 	public String date;
 	public String day;
 	public String classname;

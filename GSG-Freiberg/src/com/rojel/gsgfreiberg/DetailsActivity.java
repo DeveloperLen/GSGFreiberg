@@ -12,15 +12,15 @@ public class DetailsActivity extends Activity {
 		
 		Lesson lesson = (Lesson) getIntent().getSerializableExtra("lesson");
 		
-		((TextView) findViewById(R.id.date)).append(lesson.date);
-		((TextView) findViewById(R.id.day)).append(lesson.day);
-		((TextView) findViewById(R.id.classname)).append(lesson.classname);
-		((TextView) findViewById(R.id.teacher)).append(lesson.teacher);
-		((TextView) findViewById(R.id.subject)).append(lesson.subject);
-		((TextView) findViewById(R.id.lesson)).append(lesson.lesson);
-		((TextView) findViewById(R.id.newSubject)).append(lesson.newSubject);
-		((TextView) findViewById(R.id.newTeacher)).append(lesson.newTeacher);
-		((TextView) findViewById(R.id.room)).append(lesson.room);
-		((TextView) findViewById(R.id.instead)).append(lesson.instead);
+		((TextView) findViewById(R.id.date)).setText(lesson.date);
+		((TextView) findViewById(R.id.day)).setText(lesson.day);
+		((TextView) findViewById(R.id.classname)).setText(lesson.classname);
+		((TextView) findViewById(R.id.teacher)).setText(lesson.teacher);
+		((TextView) findViewById(R.id.subject)).setText(lesson.subject);
+		((TextView) findViewById(R.id.lesson)).setText(lesson.lesson);
+		((TextView) findViewById(R.id.newSubject)).setText(lesson.newSubject);
+		((TextView) findViewById(R.id.newTeacher)).setText(lesson.newTeacher);
+		((TextView) findViewById(R.id.room)).setText(lesson.room);
+		((TextView) findViewById(R.id.instead)).setText(lesson.instead);
 	}
 }

@@ -17,6 +17,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
     public static final int FILTER_REQUEST = 1;
 	
 	public Schedule schedule;
+	public ArrayList<Lesson> displayed;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	        
 	        table.addView(row);
         }
+		
+		displayed = lessons;
 	}
 
 	public void onClick(View v) {
@@ -70,7 +73,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			TableLayout rowTable = (TableLayout) viewRow.getParent();
 			
 			index = rowTable.indexOfChild(viewRow);
-			Lesson clickedLesson = schedule.get(index);
+			Lesson clickedLesson = displayed.get(index);
 			Intent intent = new Intent(this, DetailsActivity.class);
 			intent.putExtra("lesson", clickedLesson);
 			startActivity(intent);

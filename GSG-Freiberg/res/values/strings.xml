@@ -18,5 +18,6 @@
     <string name="enterClass">&quot;Bitte gib einen Teil der Klasse(nstufe) ein:&quot;</string>
     <string name="ok">&quot;Okay&quot;</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
+    <string name="details">Details</string>
 
 </resources>

@@ -17,7 +17,7 @@ public class Schedule {
 		ArrayList<Lesson> result = new ArrayList<Lesson>();
 		
 		for(Lesson lesson : schedule) {
-			if(lesson.classname.equals(classname))
+			if(lesson.classname.contains(classname))
 				result.add(lesson);
 		}
 		

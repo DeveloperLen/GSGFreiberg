@@ -1,5 +1,7 @@
 package com.rojel.gsgfreiberg;
 
+import java.util.ArrayList;
+
 import org.jsoup.nodes.Document;
 import android.app.Activity;
 import android.content.Intent;
@@ -12,47 +14,41 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 
 public class GSGFreibergActivity extends Activity implements OnClickListener {
-    public Schedule schedule;
+    public static final int FILTER_REQUEST = 1;
+	
+	public Schedule schedule;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setContentView(R.layout.schedule);
-        TableLayout table = (TableLayout) findViewById(R.id.table);
-        
         Document page = HTMLHandler.downloadPage(getString(R.string.page_url));
         this.schedule = HTMLHandler.parse(page);
         
-        for(int i = 0; i < schedule.size(); i++) {
+        updateList(schedule.getByClass(""));
+    }
+	
+	public void updateList(ArrayList<Lesson> lessons) {
+        setContentView(R.layout.schedule);
+        TableLayout table = (TableLayout) findViewById(R.id.table);
+        
+		for(Lesson cancel : lessons) {
 	        TextView date = new TextView(this);
-	        date.setPadding(0, 0, 5, 10);
-	        date.setText(schedule.get(i).date);
+	        date.setPadding(0, 0, 50, 10);
+	        date.setText(cancel.date);
 	        
 	        TextView classname = new TextView(this);
-	        classname.setPadding(0, 0, 5, 10);
-	        classname.setText(schedule.get(i).classname);
+	        classname.setPadding(0, 0, 50, 10);
+	        classname.setText(cancel.classname);
 	        
 	        TextView lesson = new TextView(this);
-	        lesson.setPadding(0, 0, 5, 10);
-	        lesson.setText(schedule.get(i).lesson);
-	        
-	        TextView newSubject = new TextView(this);
-	        newSubject.setPadding(0, 0, 5, 10);
-	        newSubject.setText(schedule.get(i).newSubject);
-	        
-	        TextView newTeacher = new TextView(this);
-	        newTeacher.setPadding(0, 0, 5, 10);
-	        newTeacher.setText(schedule.get(i).newTeacher);
-	        
-	        TextView room = new TextView(this);
-	        room.setPadding(0, 0, 5, 10);
-	        room.setText(schedule.get(i).room);
+	        lesson.setPadding(0, 0, 50, 10);
+	        lesson.setText(cancel.lesson);
 	        
 	        Button more = new Button(this);
-	        more.setWidth(80);
+	        more.setWidth(100);
 	        more.setPadding(0, 0, 0, 10);
-	        more.setText("Details");
+	        more.setText(R.string.details);
 	        more.setOnClickListener(this);
 	        
 	        TableRow row = new TableRow(this);
@@ -60,14 +56,11 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	        row.addView(date);
 	        row.addView(classname);
 	        row.addView(lesson);
-	        row.addView(newSubject);
-	        row.addView(newTeacher);
-	        row.addView(room);
 	        row.addView(more);
 	        
 	        table.addView(row);
         }
-    }
+	}
 
 	public void onClick(View v) {
 		if(v instanceof Button) {
@@ -97,11 +90,22 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		switch(item.getItemId()) {
 			case R.id.filter:
 				System.out.println("Pressed filter button");
-				startActivity(new Intent(this, FilterActivity.class));
+				startActivityForResult(new Intent(this, FilterActivity.class), FILTER_REQUEST);
 				
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == FILTER_REQUEST) {
+			if(resultCode == RESULT_OK) {
+				System.out.println("Got the following text from filter activity: " + data.getStringExtra("classname"));
+				updateList(schedule.getByClass(data.getStringExtra("classname")));
+			} else if(resultCode == RESULT_CANCELED) {
+				System.out.println("Aborted filter activity.");
+			}
 		}
 	}
 }

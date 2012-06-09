@@ -14,5 +14,9 @@
     <string name="newTeacher">Lehrer (Vertretung): </string>
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
+    <string name="filter">Filtern nach Klasse</string>
+    <string name="enterClass">&quot;Bitte gib einen Teil der Klasse(nstufe) ein:&quot;</string>
+    <string name="ok">&quot;Okay&quot;</string>
+    <string name="cancel">&quot;Abbrechen&quot;</string>
 
 </resources>

@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name="DetailsActivity" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name="FilterActivity" android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 </manifest>

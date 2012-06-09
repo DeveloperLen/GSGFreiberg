@@ -67,15 +67,19 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
     }
 
 	public void onClick(View v) {
-		int index;
-		
-		TableRow viewRow = (TableRow) v.getParent();
-		TableLayout rowTable = (TableLayout) viewRow.getParent();
-		
-		index = rowTable.indexOfChild(viewRow);
-		Lesson clickedLesson = schedule.get(index);
-		Intent intent = new Intent(this, DetailsActivity.class);
-		intent.putExtra("lesson", clickedLesson);
-		startActivity(intent);
+		if(v instanceof Button) {
+			int index;
+			
+			TableRow viewRow = (TableRow) v.getParent();
+			TableLayout rowTable = (TableLayout) viewRow.getParent();
+			
+			index = rowTable.indexOfChild(viewRow);
+			Lesson clickedLesson = schedule.get(index);
+			Intent intent = new Intent(this, DetailsActivity.class);
+			intent.putExtra("lesson", clickedLesson);
+			startActivity(intent);
+		} else if(v instanceof TextView) {
+			
+		}
 	}
 }

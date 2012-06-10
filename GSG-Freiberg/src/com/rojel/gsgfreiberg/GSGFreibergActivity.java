@@ -34,30 +34,25 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
         TableLayout table = (TableLayout) findViewById(R.id.table);
         
 		for(Lesson cancel : lessons) {
-	        TextView date = new TextView(this);
-	        date.setPadding(0, 0, 50, 10);
+	        TableRow row = new TableRow(this);
+
+	        TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 	        date.setText(cancel.date);
 	        
-	        TextView classname = new TextView(this);
-	        classname.setPadding(0, 0, 50, 10);
+	        TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 	        classname.setText(cancel.classname);
 	        
-	        TextView lesson = new TextView(this);
-	        lesson.setPadding(0, 0, 50, 10);
+	        TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 	        lesson.setText(cancel.lesson);
 	        
-	        Button more = new Button(this);
-	        more.setWidth(100);
-	        more.setPadding(0, 0, 0, 10);
-	        more.setText(R.string.details);
-	        more.setOnClickListener(this);
-	        
-	        TableRow row = new TableRow(this);
+	        Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
+	        details.setText(R.string.details);
+	        details.setOnClickListener(this);
 	        
 	        row.addView(date);
 	        row.addView(classname);
 	        row.addView(lesson);
-	        row.addView(more);
+	        row.addView(details);
 	        
 	        table.addView(row);
         }

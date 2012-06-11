@@ -12,15 +12,16 @@
         android:label="@string/app_name" >
         <activity
             android:name=".GSGFreibergActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+        	android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="DetailsActivity" android:theme="@android:style/Theme.Dialog"></activity>
-        <activity android:name="FilterActivity" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name="DetailsActivity" android:theme="@android:style/Theme.Dialog" android:screenOrientation="portrait"></activity>
+        <activity android:name="FilterActivity" android:theme="@android:style/Theme.Dialog" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

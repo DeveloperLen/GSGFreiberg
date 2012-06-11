@@ -3,4 +3,7 @@
     <item android:id="@+id/filter"
           android:title="@string/filter" >
     </item>
+    <item android:id="@+id/disablefilter"
+          android:title="@string/disablefilter" >
+    </item>
 </menu>

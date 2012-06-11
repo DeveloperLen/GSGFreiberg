@@ -1,12 +1,18 @@
 package com.rojel.gsgfreiberg;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.concurrent.ExecutionException;
 
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 public class HTMLHandler {	
@@ -24,7 +30,6 @@ public class HTMLHandler {
 		}
 		
 		System.out.println("Download finished.");
-		System.out.println(page.title());
 		
 		return page;
 	}
@@ -37,8 +42,6 @@ public class HTMLHandler {
 
 		lessons.remove(0); //remove header
 		lessons.remove(0);
-		
-		System.out.println("Number of cancels: " + lessons.size());
 		
 		for(Element cancel : lessons) {
 			String date = cancel.getElementsByTag("td").get(0).text();
@@ -60,6 +63,26 @@ public class HTMLHandler {
 		System.out.println("Parsed schedule from document.");
 		
 		return result;
+	}
+	
+	public static void save(Context context, Document doc) throws IOException {
+		String docString = doc.html();
+		
+		FileOutputStream fos = context.openFileOutput(context.getString(R.string.fileName), Context.MODE_PRIVATE);
+		ObjectOutputStream os = new ObjectOutputStream(fos);
+		os.writeObject(docString);
+		os.close();
+	}
+	
+	public static Document load(Context context) throws StreamCorruptedException, IOException, ClassNotFoundException {
+		FileInputStream fis = context.openFileInput(context.getString(R.string.fileName));
+		ObjectInputStream is = new ObjectInputStream(fis);
+		String docString = (String) is.readObject();
+		is.close();
+		
+		Document doc = Jsoup.parse(docString);
+		
+		return doc;
 	}
 	
 	private static class DownloaderTask extends AsyncTask<String, Void, Document> {

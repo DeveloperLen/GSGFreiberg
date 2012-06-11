@@ -1,8 +1,11 @@
 package com.rojel.gsgfreiberg;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Schedule {
+public class Schedule implements Serializable {
+	private static final long serialVersionUID = 7701010616467501059L;
+	
 	private ArrayList<Lesson> schedule = new ArrayList<Lesson>();
 	
 	public Lesson get(int i) {

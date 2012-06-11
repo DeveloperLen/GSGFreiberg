@@ -19,5 +19,8 @@
     <string name="ok">&quot;Okay&quot;</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
     <string name="details">Details</string>
+    <string name="disablefilter">Filter aufheben</string>
+    <string name="fileName">offline_schedule.dat</string>
+    <string name="connectionProblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
 
 </resources>

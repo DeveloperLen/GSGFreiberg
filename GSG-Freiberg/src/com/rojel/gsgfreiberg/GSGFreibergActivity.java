@@ -1,11 +1,16 @@
 package com.rojel.gsgfreiberg;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import org.jsoup.nodes.Document;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +25,8 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	
 	public Schedule schedule;
 	public ArrayList<Lesson> displayed;
+	public String filter;
+	public Menu menu;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
         this.schedule = HTMLHandler.parse(page);
         
         updateList(schedule.getByClass(""));
+        filter = "";
     }
 	
 	public void updateList(ArrayList<Lesson> lessons) {
@@ -105,6 +113,15 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu, menu);
+		this.menu = menu;
+		
+		try {
+			this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + loadLastFilter());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		return true;
 	}
@@ -114,6 +131,16 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			case R.id.filter:
 				System.out.println("Pressed filter button");
 				startActivityForResult(new Intent(this, FilterActivity.class), FILTER_REQUEST);
+				
+				return true;
+			case R.id.lastfiltered:
+				try {
+					updateList(schedule.getByClass(loadLastFilter()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
 				
 				return true;
 			case R.id.disablefilter:
@@ -130,9 +157,38 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			if(resultCode == RESULT_OK) {
 				System.out.println("Got the following text from filter activity: " + data.getStringExtra("classname"));
 				updateList(schedule.getByClass(data.getStringExtra("classname")));
+				filter = data.getStringExtra("classname");
+				try {
+					saveLastFilter(filter);
+					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + loadLastFilter());
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else if(resultCode == RESULT_CANCELED) {
 				System.out.println("Aborted filter activity.");
 			}
 		}
+	}
+	
+	public void saveLastFilter(String filter) throws IOException {
+		FileOutputStream fos = openFileOutput(getString(R.string.optionsfile), Context.MODE_PRIVATE);
+		ObjectOutputStream os = new ObjectOutputStream(fos);
+		os.writeObject(filter);
+		os.close();
+	}
+	
+	public String loadLastFilter() throws IOException, ClassNotFoundException {
+		FileInputStream fis = openFileInput(getString(R.string.optionsfile));
+		ObjectInputStream is = new ObjectInputStream(fis);
+		String filter = (String) is.readObject();
+		is.close();
+		
+		if(filter == null)
+			filter = "";
+		
+		return filter;
 	}
 }

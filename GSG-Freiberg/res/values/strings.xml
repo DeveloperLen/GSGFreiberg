@@ -22,5 +22,7 @@
     <string name="disablefilter">Filter aufheben</string>
     <string name="fileName">offline_schedule.dat</string>
     <string name="connectionProblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
+    <string name="lastfiltered">Zuletzt gefiltert nach: </string>
+    <string name="optionsfile">gsg_options.dat</string>
 
 </resources>

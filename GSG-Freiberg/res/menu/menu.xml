@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/filter"
-          android:title="@string/filter" >
+    <item android:id="@+id/update" android:title="@string/update"></item>
+    <item android:id="@+id/filtermenu" android:title="@string/filtermenu">
+        <menu>
+            <item android:id="@+id/filterbyclass" android:title="@string/filterbyclass"/>
+            <item android:id="@+id/lastfiltered" android:title="@string/lastfiltered"/>
+            <item android:id="@+id/disablefilter" android:title="@string/disablefilter"/>
+        </menu>
     </item>
-    <item android:id="@+id/lastfiltered"
-          android:title="@string/lastfiltered" >
-    </item>
-    <item android:id="@+id/disablefilter" android:title="@string/disablefilter"></item>
 </menu>

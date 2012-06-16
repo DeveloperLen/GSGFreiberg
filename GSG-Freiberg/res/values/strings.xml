@@ -14,7 +14,7 @@
     <string name="newTeacher">Lehrer (Vertretung): </string>
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
-    <string name="filter">Filtern nach Klasse</string>
+    <string name="filterbyclass">Filtern nach Klasse</string>
     <string name="enterClass">&quot;Bitte gib einen Teil der Klasse(nstufe) ein:&quot;</string>
     <string name="ok">&quot;Okay&quot;</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
@@ -24,5 +24,7 @@
     <string name="connectionProblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
     <string name="lastfiltered">Zuletzt gefiltert nach: </string>
     <string name="optionsfile">gsg_options.dat</string>
+    <string name="update">Aktualisieren</string>
+    <string name="filtermenu">Filtern</string>
 
 </resources>

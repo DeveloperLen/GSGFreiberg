@@ -32,31 +32,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        Document page = HTMLHandler.downloadPage(getString(R.string.page_url));
-        
-        if(page == null) {
-        	System.out.println("Download failed.");
-        	
-        	Toast.makeText(this, R.string.connectionProblem, Toast.LENGTH_LONG).show();
-        	
-        	try {
-				page = HTMLHandler.load(this);
-			} catch (StreamCorruptedException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-        } else {
-        	try {
-				HTMLHandler.save(this, page);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        }
-        
-        this.schedule = HTMLHandler.parse(page);
+        updateSchedule();
         
         updateList(schedule.getByClass(""));
         filter = "";
@@ -128,7 +104,13 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-			case R.id.filter:
+			case R.id.update:
+				updateSchedule();
+				updateList(schedule.getByClass(filter));
+				System.out.println(filter);
+				
+				return true;
+			case R.id.filterbyclass:
 				System.out.println("Pressed filter button");
 				startActivityForResult(new Intent(this, FilterActivity.class), FILTER_REQUEST);
 				
@@ -136,6 +118,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			case R.id.lastfiltered:
 				try {
 					updateList(schedule.getByClass(loadLastFilter()));
+					filter = loadLastFilter();
 				} catch (IOException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
@@ -164,7 +147,6 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if(resultCode == RESULT_CANCELED) {
@@ -190,5 +172,33 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			filter = "";
 		
 		return filter;
+	}
+	
+	public void updateSchedule() {
+		Document page = HTMLHandler.downloadPage(getString(R.string.page_url));
+        
+        if(page == null) {
+        	System.out.println("Download failed.");
+        	
+        	Toast.makeText(this, R.string.connectionProblem, Toast.LENGTH_LONG).show();
+        	
+        	try {
+				page = HTMLHandler.load(this);
+			} catch (StreamCorruptedException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+        } else {
+        	try {
+				HTMLHandler.save(this, page);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
+        
+        this.schedule = HTMLHandler.parse(page);
 	}
 }

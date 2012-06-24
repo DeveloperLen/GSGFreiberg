@@ -1,16 +1,9 @@
 package com.rojel.gsgfreiberg;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import org.jsoup.nodes.Document;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,50 +14,63 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 
 public class GSGFreibergActivity extends Activity implements OnClickListener {
-    public static final int FILTER_REQUEST = 1;
+	public static final int FILTER_REQUEST = 1;
 	
 	public Schedule schedule;
 	public ArrayList<Lesson> displayed;
 	public String filter;
 	public Menu menu;
 	
-	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        updateSchedule();
-        
-        updateList(schedule.getByClass(""));
-        filter = "";
-    }
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		GSGSave.load(this);
+		
+		updateSchedule();
+		
+		updateList(schedule.getByClass(""));
+		filter = "";
+	}
+	
+	protected void onStop() {
+		super.onStop();
+		
+		GSGSave.save(this);
+	}
+	
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		GSGSave.save(this);
+	}
 	
 	public void updateList(ArrayList<Lesson> lessons) {
-        setContentView(R.layout.schedule);
-        TableLayout table = (TableLayout) findViewById(R.id.table);
-        
+		setContentView(R.layout.schedule);
+		TableLayout table = (TableLayout) findViewById(R.id.table);
+		
 		for(Lesson cancel : lessons) {
-	        TableRow row = new TableRow(this);
-
-	        TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-	        date.setText(cancel.date);
-	        
-	        TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-	        classname.setText(cancel.classname);
-	        
-	        TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-	        lesson.setText(cancel.lesson);
-	        
-	        Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
-	        details.setText(R.string.details);
-	        details.setOnClickListener(this);
-	        
-	        row.addView(date);
-	        row.addView(classname);
-	        row.addView(lesson);
-	        row.addView(details);
-	        
-	        table.addView(row);
-        }
+			TableRow row = new TableRow(this);
+			
+			TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+			date.setText(cancel.date);
+			
+			TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+			classname.setText(cancel.classname);
+			
+			TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+			lesson.setText(cancel.lesson);
+			
+			Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
+			details.setText(R.string.details);
+			details.setOnClickListener(this);
+			
+			row.addView(date);
+			row.addView(classname);
+			row.addView(lesson);
+			row.addView(details);
+			
+			table.addView(row);
+		}
 		
 		displayed = lessons;
 	}
@@ -91,13 +97,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		inflater.inflate(R.menu.menu, menu);
 		this.menu = menu;
 		
-		try {
-			this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + loadLastFilter());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
 		
 		return true;
 	}
@@ -116,18 +116,13 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				
 				return true;
 			case R.id.lastfiltered:
-				try {
-					updateList(schedule.getByClass(loadLastFilter()));
-					filter = loadLastFilter();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+				updateList(schedule.getByClass(GSGSave.lastFilter));
+				filter = GSGSave.lastFilter;
 				
 				return true;
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
+				filter = "";
 				
 				return true;
 			default:
@@ -141,64 +136,27 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				System.out.println("Got the following text from filter activity: " + data.getStringExtra("classname"));
 				updateList(schedule.getByClass(data.getStringExtra("classname")));
 				filter = data.getStringExtra("classname");
-				try {
-					saveLastFilter(filter);
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + loadLastFilter());
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
 			} else if(resultCode == RESULT_CANCELED) {
 				System.out.println("Aborted filter activity.");
 			}
 		}
 	}
 	
-	public void saveLastFilter(String filter) throws IOException {
-		FileOutputStream fos = openFileOutput(getString(R.string.optionsfile), Context.MODE_PRIVATE);
-		ObjectOutputStream os = new ObjectOutputStream(fos);
-		os.writeObject(filter);
-		os.close();
-	}
-	
-	public String loadLastFilter() throws IOException, ClassNotFoundException {
-		FileInputStream fis = openFileInput(getString(R.string.optionsfile));
-		ObjectInputStream is = new ObjectInputStream(fis);
-		String filter = (String) is.readObject();
-		is.close();
-		
-		if(filter == null)
-			filter = "";
-		
-		return filter;
-	}
-	
 	public void updateSchedule() {
 		Document page = HTMLHandler.downloadPage(getString(R.string.page_url));
-        
-        if(page == null) {
-        	System.out.println("Download failed.");
-        	
-        	Toast.makeText(this, R.string.connectionProblem, Toast.LENGTH_LONG).show();
-        	
-        	try {
-				page = HTMLHandler.load(this);
-			} catch (StreamCorruptedException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-        } else {
-        	try {
-				HTMLHandler.save(this, page);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        }
-        
-        this.schedule = HTMLHandler.parse(page);
+		
+		if(page == null) {
+			System.out.println("Download failed.");
+			
+			Toast.makeText(this, R.string.connectionProblem, Toast.LENGTH_LONG).show();
+			
+			page = GSGSave.page;
+		} else {
+			GSGSave.page = page;
+		}
+		
+		this.schedule = HTMLHandler.parse(page);
 	}
 }

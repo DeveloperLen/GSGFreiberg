@@ -9,7 +9,8 @@
 	    android:id="@+id/table"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:scrollbars="vertical">
+	    android:scrollbars="vertical"
+	    android:stretchColumns="*">
 	
 	</TableLayout>
 </ScrollView>

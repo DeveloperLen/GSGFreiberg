@@ -17,11 +17,11 @@ public class GSGSave {
 	public static String lastFilter;
 	
 	public static void load(Context context) {
-		GSGSave.File file = (File) loadObject(context.getString(R.string.fileName), context);
+		GSGSave.File file = (File) loadObject(context.getString(R.string.filename), context);
 		
 		if(file == null) {
 			file = new GSGSave.File();
-			saveObject(file, context.getString(R.string.fileName), context);
+			saveObject(file, context.getString(R.string.filename), context);
 		}
 		
 		page = Jsoup.parse(file.html);
@@ -34,7 +34,7 @@ public class GSGSave {
 		file.html = page.html();
 		file.lastFilter = lastFilter;
 		
-		saveObject(file, context.getString(R.string.fileName), context);
+		saveObject(file, context.getString(R.string.filename), context);
 	}
 	
 	private static Object loadObject(String fileName, Context context) {

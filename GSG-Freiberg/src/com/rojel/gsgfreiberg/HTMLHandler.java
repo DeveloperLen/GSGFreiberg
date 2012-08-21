@@ -68,14 +68,14 @@ public class HTMLHandler {
 	public static void save(Context context, Document doc) throws IOException {
 		String docString = doc.html();
 		
-		FileOutputStream fos = context.openFileOutput(context.getString(R.string.fileName), Context.MODE_PRIVATE);
+		FileOutputStream fos = context.openFileOutput(context.getString(R.string.filename), Context.MODE_PRIVATE);
 		ObjectOutputStream os = new ObjectOutputStream(fos);
 		os.writeObject(docString);
 		os.close();
 	}
 	
 	public static Document load(Context context) throws StreamCorruptedException, IOException, ClassNotFoundException {
-		FileInputStream fis = context.openFileInput(context.getString(R.string.fileName));
+		FileInputStream fis = context.openFileInput(context.getString(R.string.filename));
 		ObjectInputStream is = new ObjectInputStream(fis);
 		String docString = (String) is.readObject();
 		is.close();

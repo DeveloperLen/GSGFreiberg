@@ -2,28 +2,29 @@
 <resources>
 
     <string name="hello">Hello World, GSGFreibergActivity!</string>
-    <string name="app_name">GSGFreiberg</string>
-    <string name="page_url">http://www.gsg-freiberg.de/fileadmin/user_upload/html/vertretungsplan/Plan_Schueler.htm</string>
+    <string name="appname">GSGFreiberg</string>
+    <string name="pageurl">http://www.gsg-freiberg.de/fileadmin/user_upload/html/vertretungsplan/Plan_Schueler.htm</string>
     <string name="date">Datum: </string>
     <string name="day">Tag: </string>
     <string name="classname">Klasse(n): </string>
     <string name="teacher">Lehrer: </string>
     <string name="subject">Fach: </string>
     <string name="lesson">Stunde: </string>
-    <string name="newSubject">Fach (Vertretung): </string>
-    <string name="newTeacher">Lehrer (Vertretung): </string>
+    <string name="newsubject">Fach (Vertretung): </string>
+    <string name="newteacher">Lehrer (Vertretung): </string>
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
     <string name="filterbyclass">Filtern nach Klasse</string>
-    <string name="enterClass">&quot;Bitte gib einen Teil der Klasse(nstufe) ein:&quot;</string>
+    <string name="enterclass">&quot;Bitte gib die Klasse(nstufe) ein:&quot;</string>
     <string name="ok">&quot;Okay&quot;</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
     <string name="details">Details</string>
     <string name="disablefilter">Filter aufheben</string>
-    <string name="fileName">gsgfreiberg.dat</string>
-    <string name="connectionProblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
+    <string name="filename">gsgfreiberg.dat</string>
+    <string name="connectionproblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
     <string name="lastfiltered">Zuletzt gefiltert nach: </string>
     <string name="update">Aktualisieren</string>
     <string name="filtermenu">Filtern</string>
+    <string name="nocancels">Für deine Auswahl sind zurzeit keine Ausfälle eingetragen.</string>
 
 </resources>

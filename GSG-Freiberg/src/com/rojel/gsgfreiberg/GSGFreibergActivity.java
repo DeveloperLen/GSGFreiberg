@@ -48,28 +48,32 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.schedule);
 		TableLayout table = (TableLayout) findViewById(R.id.table);
 		
-		for(Lesson cancel : lessons) {
-			TableRow row = new TableRow(this);
-			
-			TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-			date.setText(cancel.date);
-			
-			TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-			classname.setText(cancel.classname);
-			
-			TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
-			lesson.setText(cancel.lesson);
-			
-			Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
-			details.setText(R.string.details);
-			details.setOnClickListener(this);
-			
-			row.addView(date);
-			row.addView(classname);
-			row.addView(lesson);
-			row.addView(details);
-			
-			table.addView(row);
+		if(lessons.size() == 0) {
+			Toast.makeText(this, R.string.nocancels, Toast.LENGTH_LONG).show();
+		} else {
+			for(Lesson cancel : lessons) {
+				TableRow row = new TableRow(this);
+				
+				TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+				date.setText(cancel.date);
+				
+				TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+				classname.setText(cancel.classname);
+				
+				TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
+				lesson.setText(cancel.lesson);
+				
+				Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
+				details.setText(R.string.details);
+				details.setOnClickListener(this);
+				
+				row.addView(date);
+				row.addView(classname);
+				row.addView(lesson);
+				row.addView(details);
+				
+				table.addView(row);
+			}
 		}
 		
 		displayed = lessons;
@@ -145,12 +149,12 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	}
 	
 	public void updateSchedule() {
-		Document page = HTMLHandler.downloadPage(getString(R.string.page_url));
+		Document page = HTMLHandler.downloadPage(getString(R.string.pageurl));
 		
 		if(page == null) {
 			System.out.println("Download failed.");
 			
-			Toast.makeText(this, R.string.connectionProblem, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.connectionproblem, Toast.LENGTH_LONG).show();
 			
 			page = GSGSave.page;
 		} else {

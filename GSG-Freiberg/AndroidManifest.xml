@@ -4,7 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="10" />
+    <uses-sdk 
+        android:minSdkVersion="14" 
+        android:targetSdkVersion="19"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -20,8 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="DetailsActivity" android:theme="@android:style/Theme.Dialog" android:screenOrientation="portrait"></activity>
-        <activity android:name="FilterActivity" android:theme="@android:style/Theme.Dialog" android:screenOrientation="portrait"></activity>
-    </application>
-
+        <activity 
+            android:name="DetailsActivity" 
+            android:theme="@android:style/Theme.Holo.Dialog" 
+			android:label="@string/detailsPopup"
+            android:screenOrientation="portrait">
+        </activity>
+		<activity
+			android:name=".TeacherListActivity"
+			android:theme="@android:style/Theme.Holo"
+			android:label="@string/teacherlist"
+			android:screenOrientation="portrait">
+		</activity>
+	</application>
 </manifest>

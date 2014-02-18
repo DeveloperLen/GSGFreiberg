@@ -17,7 +17,7 @@
     <string name="instead">statt: </string>
     <string name="filterbyclass">Filtern nach Klasse</string>
     <string name="enterclass">&quot;Bitte gib die Klasse(nstufe) ein:&quot;</string>
-    <string name="ok">&quot;Okay&quot;</string>
+    <string name="choose">Übernehmen</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
     <string name="details">Details</string>
     <string name="disablefilter">Filter aufheben</string>
@@ -36,5 +36,16 @@
 	<string name="class11">Klasse 11</string>
 	<string name="class12">Klasse 12</string>
 	<string name="teacherlist">Lehrerliste</string>
+	<string name="classChooserTitle">Klassenstufe wählen:</string>
+	<string-array name="classChosserSpinner">
+		<item >Klasse 5</item>
+		<item >Klasse 6</item>
+		<item >Klasse 7</item>
+		<item >Klasse 8</item>
+		<item >Klasse 9</item>
+		<item >Klasse 10</item>
+		<item >Klasse 11</item>
+		<item >Klasse 12</item>
+	</string-array>
 
 </resources>

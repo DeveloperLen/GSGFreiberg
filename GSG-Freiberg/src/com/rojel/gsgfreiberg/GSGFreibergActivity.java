@@ -12,11 +12,13 @@ import org.jsoup.nodes.*;
 public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public static final int FILTER_REQUEST = 1;
 	public static final int DETAIL_REQUEST = 2048;
+	public static final int CLASSCHOOSER_REQUEST = 454864948;
 	public static View tableView;
 	
 	public Schedule schedule;
 	public ArrayList<Lesson> displayed;
-	public String filter;
+	public static String filter;
+
 	public Menu menu;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,6 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		
 		GSGSave.save(this);
 	}
-	
 	public void updateList(ArrayList<Lesson> lessons) {
 		setContentView(R.layout.schedule);
 		TableLayout table = (TableLayout) findViewById(R.id.table);
@@ -123,6 +124,11 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				tableView.setBackgroundColor(0x00000000);
 			}
 		}
+		if(requestCode == CLASSCHOOSER_REQUEST){
+			if(resultCode == RESULT_OK){
+				updateList(schedule.getByClass(filter));
+			}
+		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 	
@@ -146,13 +152,11 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				updateSchedule();
 				updateList(schedule.getByClass(filter));
 				System.out.println(filter);
-				
 				return true;
-			case R.id.teacherlist:
-				Intent teacherIntent = new Intent(this, TeacherListActivity.class);
-				startActivity(teacherIntent);
-				return true;
-			case R.id.class5:
+			case R.id.filterbyclass:
+				Intent intent = new Intent(this, ClassChooser.class);
+				startActivityForResult(intent, CLASSCHOOSER_REQUEST);
+			/*case R.id.class5:
 				filter = "5";
 				GSGSave.lastFilter = filter;
 				updateList(schedule.getByClass(filter));
@@ -212,7 +216,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				updateList(schedule.getByClass(GSGSave.lastFilter));
 				filter = GSGSave.lastFilter;
 				
-				return true;
+				return true;*/
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
 				filter = "";

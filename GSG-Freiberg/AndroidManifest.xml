@@ -28,6 +28,12 @@
 			android:label="@string/detailsPopup"
             android:screenOrientation="portrait">
         </activity>
+        <activity 
+            android:name=".ClassChooser"
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:label="@string/classChooserTitle"
+            android:screenOrientation="portrait">
+        </activity>
 		<activity
 			android:name=".TeacherListActivity"
 			android:theme="@android:style/Theme.Holo"

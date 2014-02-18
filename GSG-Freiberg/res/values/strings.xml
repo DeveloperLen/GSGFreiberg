@@ -3,6 +3,7 @@
 
     <string name="hello">Hello World, GSGFreibergActivity!</string>
     <string name="appname">GSGFreiberg</string>
+	<string name="detailsPopup">Details:</string>
     <string name="pageurl">http://www.gsg-freiberg.de/fileadmin/user_upload/html/vertretungsplan/Plan_Schueler.htm</string>
     <string name="date">Datum: </string>
     <string name="day">Tag: </string>
@@ -26,5 +27,14 @@
     <string name="update">Aktualisieren</string>
     <string name="filtermenu">Filtern</string>
     <string name="nocancels">Für deine Auswahl sind zurzeit keine Ausfälle eingetragen.</string>
+	<string name="class5">Klasse 5</string>
+	<string name="class6">Klasse 6</string>
+	<string name="class7">Klasse 7</string>
+	<string name="class8">Klasse 8</string>
+	<string name="class9">Klasse 9</string>
+	<string name="class10">Klasse 10</string>
+	<string name="class11">Klasse 11</string>
+	<string name="class12">Klasse 12</string>
+	<string name="teacherlist">Lehrerliste</string>
 
 </resources>

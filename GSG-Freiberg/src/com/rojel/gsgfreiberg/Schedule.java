@@ -20,8 +20,12 @@ public class Schedule implements Serializable {
 		ArrayList<Lesson> result = new ArrayList<Lesson>();
 		
 		for(Lesson lesson : schedule) {
-			if(lesson.classname.contains(classname))
+			
+			if(lesson.classname.startsWith("0",0)&&lesson.classname.startsWith(classname,1)){
 				result.add(lesson);
+			}else if(lesson.classname.startsWith("1",0)&&lesson.classname.startsWith(classname,0)){
+				result.add(lesson);
+			}
 		}
 		
 		return result;

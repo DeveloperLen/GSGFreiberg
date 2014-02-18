@@ -1,12 +1,15 @@
 package com.rojel.gsgfreiberg;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.TextView;
+import android.app.*;
+import android.content.*;
+import android.os.*;
+import android.widget.*;
 
 public class DetailsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		setResult(RESULT_OK);
 		
 		setContentView(R.layout.details);
 		

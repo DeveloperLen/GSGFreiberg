@@ -1,20 +1,18 @@
 package com.rojel.gsgfreiberg;
 
-import java.util.ArrayList;
-
-import org.jsoup.nodes.Document;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.*;
+import android.content.*;
+import android.os.*;
+import android.view.*;
+import android.view.View.*;
 import android.widget.*;
+import java.util.*;
+import org.jsoup.nodes.*;
 
 public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public static final int FILTER_REQUEST = 1;
+	public static final int DETAIL_REQUEST = 2048;
+	public static View tableView;
 	
 	public Schedule schedule;
 	public ArrayList<Lesson> displayed;
@@ -51,36 +49,44 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		if(lessons.size() == 0) {
 			Toast.makeText(this, R.string.nocancels, Toast.LENGTH_LONG).show();
 		} else {
+			
+			
+			
+			
 			for(Lesson cancel : lessons) {
 				TableRow row = new TableRow(this);
+				row.setOnClickListener(this);
 				
 				TextView date = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 				date.setText(cancel.date);
+				date.setOnClickListener(this);
 				
 				TextView classname = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 				classname.setText(cancel.classname);
+				classname.setOnClickListener(this);
 				
 				TextView lesson = (TextView) this.getLayoutInflater().inflate(R.layout.scheduleitemtemplate, null);
 				lesson.setText(cancel.lesson);
+				lesson.setOnClickListener(this);
 				
-				Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
-				details.setText(R.string.details);
-				details.setOnClickListener(this);
+				//Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
+				//details.setText(R.string.details);
+				//details.setOnClickListener(this);
+				//details.setVisibility(1);
 				
 				row.addView(date);
 				row.addView(classname);
 				row.addView(lesson);
-				row.addView(details);
+				//row.addView(details);
 				
 				table.addView(row);
 			}
 		}
-		
 		displayed = lessons;
 	}
 
 	public void onClick(View v) {
-		if(v instanceof Button) {
+		/*if(v instanceof Button) {
 			int index;
 			
 			TableRow viewRow = (TableRow) v.getParent();
@@ -91,17 +97,45 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			Intent intent = new Intent(this, DetailsActivity.class);
 			intent.putExtra("lesson", clickedLesson);
 			startActivity(intent);
-		} else if(v instanceof TextView) {
+		} else */if(v instanceof TextView) {
+			int index;
+
+			TableRow viewRow = (TableRow) v.getParent();
+			TableLayout rowTable = (TableLayout) viewRow.getParent();
+
+			tableView = viewRow;
+			viewRow.setBackgroundColor(0x33FFFFFF);
 			
+			index = rowTable.indexOfChild(viewRow);
+			Lesson clickedLesson = displayed.get(index);
+			
+			Intent intent = new Intent(this, DetailsActivity.class);
+			intent.putExtra("lesson", clickedLesson);
+			startActivityForResult(intent, DETAIL_REQUEST);
 		}
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if(requestCode == DETAIL_REQUEST){
+			if(resultCode == RESULT_OK){
+				tableView.setBackgroundColor(0x00000000);
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu, menu);
 		this.menu = menu;
-		
-		this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+		if(!GSGSave.lastFilter.equalsIgnoreCase("")){
+			this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+		}else{
+			this.menu.findItem(R.id.lastfiltered).setVisible(false);
+		}
 		
 		return true;
 	}
@@ -114,10 +148,65 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				System.out.println(filter);
 				
 				return true;
-			case R.id.filterbyclass:
-				System.out.println("Pressed filter button");
-				startActivityForResult(new Intent(this, FilterActivity.class), FILTER_REQUEST);
-				
+			case R.id.teacherlist:
+				Intent teacherIntent = new Intent(this, TeacherListActivity.class);
+				startActivity(teacherIntent);
+				return true;
+			case R.id.class5:
+				filter = "5";
+				GSGSave.lastFilter = filter;
+				updateList(schedule.getByClass(filter));
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class6:
+				filter = "6";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class7:
+				filter = "7";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class8:
+				filter = "8";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class9:
+				filter = "9";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class10:
+				filter = "10";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class11:
+				filter = "11";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				return true;
+			case R.id.class12:
+				filter = "12";
+				updateList(schedule.getByClass(filter));
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
 				return true;
 			case R.id.lastfiltered:
 				updateList(schedule.getByClass(GSGSave.lastFilter));
@@ -127,14 +216,15 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
 				filter = "";
-				
+				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
 	
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	/*public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == FILTER_REQUEST) {
 			if(resultCode == RESULT_OK) {
 				System.out.println("Got the following text from filter activity: " + data.getStringExtra("classname"));
@@ -146,7 +236,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				System.out.println("Aborted filter activity.");
 			}
 		}
-	}
+	}*/
 	
 	public void updateSchedule() {
 		Document page = HTMLHandler.downloadPage(getString(R.string.pageurl));

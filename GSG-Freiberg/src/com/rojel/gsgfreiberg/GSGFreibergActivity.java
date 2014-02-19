@@ -126,6 +126,8 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		}
 		if(requestCode == CLASSCHOOSER_REQUEST){
 			if(resultCode == RESULT_OK){
+			    filter = data.getStringExtra("class");
+				GSGSave.lastFilter = filter;
 				updateList(schedule.getByClass(filter));
 			}
 		}
@@ -156,6 +158,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			case R.id.filterbyclass:
 				Intent intent = new Intent(this, ClassChooser.class);
 				startActivityForResult(intent, CLASSCHOOSER_REQUEST);
+				return true;
 			/*case R.id.class5:
 				filter = "5";
 				GSGSave.lastFilter = filter;

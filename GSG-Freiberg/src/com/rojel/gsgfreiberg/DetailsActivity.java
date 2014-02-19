@@ -1,9 +1,8 @@
 package com.rojel.gsgfreiberg;
 
-import android.app.*;
-import android.content.*;
-import android.os.*;
-import android.widget.*;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
 
 public class DetailsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {

@@ -20,9 +20,9 @@ public class FilterActivity extends Activity implements OnClickListener {
 		ok.setOnClickListener(this);
 		cancel.setOnClickListener(this);
 	}
-
+	
 	public void onClick(View view) {
-		switch(view.getId()) {
+		switch (view.getId()) {
 			case R.id.okay:
 				Intent data = new Intent();
 				data.putExtra("classname", ((EditText) findViewById(R.id.classInput)).getText().toString());

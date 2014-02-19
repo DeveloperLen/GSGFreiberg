@@ -16,7 +16,7 @@ public class Lesson implements Serializable {
 	public String room;
 	public String instead;
 	
-	public Lesson (String date, String day, String classname, String teacher, String subject, String lesson, String newSubject, String newTeacher, String room, String instead) {
+	public Lesson(String date, String day, String classname, String teacher, String subject, String lesson, String newSubject, String newTeacher, String room, String instead) {
 		this.date = date;
 		this.day = day;
 		this.classname = classname;

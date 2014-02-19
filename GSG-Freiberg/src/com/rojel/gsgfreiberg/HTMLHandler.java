@@ -15,8 +15,8 @@ import org.jsoup.select.Elements;
 import android.content.Context;
 import android.os.AsyncTask;
 
-public class HTMLHandler {	
-	public static Document downloadPage(String url) {		
+public class HTMLHandler {
+	public static Document downloadPage(String url) {
 		Document page = null;
 		
 		System.out.println("Downloading page.");
@@ -39,11 +39,11 @@ public class HTMLHandler {
 		
 		Element schedule = doc.getElementById("Vertretungsplan");
 		Elements lessons = schedule.getElementsByTag("tr");
-
+		
 		lessons.remove(0); //remove header
 		lessons.remove(0);
 		
-		for(Element cancel : lessons) {
+		for (Element cancel : lessons) {
 			String date = cancel.getElementsByTag("td").get(0).text();
 			String day = cancel.getElementsByTag("td").get(1).text();
 			String classname = cancel.getElementsByTag("td").get(2).text();

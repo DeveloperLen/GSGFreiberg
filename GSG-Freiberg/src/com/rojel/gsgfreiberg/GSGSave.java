@@ -19,7 +19,7 @@ public class GSGSave {
 	public static void load(Context context) {
 		GSGSave.File file = (File) loadObject(context.getString(R.string.filename), context);
 		
-		if(file == null) {
+		if (file == null) {
 			file = new GSGSave.File();
 			saveObject(file, context.getString(R.string.filename), context);
 		}

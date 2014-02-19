@@ -37,39 +37,14 @@ public class ClassChooser extends Activity implements OnClickListener, OnItemSel
 		
 	}
 	
-	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-		String chosen = parent.getItemAtPosition(pos).toString();
-		if (chosen.equalsIgnoreCase("@string/class5")) {
-			filter = "5";
-		}
-		if (chosen.equalsIgnoreCase("@string/class6")) {
-			filter = "6";
-			System.out.println("6");
-		}
-		if (chosen.equalsIgnoreCase("@string/class7")) {
-			filter = "7";
-		}
-		if (chosen.equalsIgnoreCase("@string/class8")) {
-			filter = "8";
-		}
-		if (chosen.equalsIgnoreCase("@string/class9")) {
-			filter = "9";
-		}
-		if (chosen.equalsIgnoreCase("@string/class10")) {
-			filter = "10";
-		}
-		if (chosen.equalsIgnoreCase("@string/class11")) {
-			filter = "11";
-		}
-		if (chosen.equalsIgnoreCase("@string/class12")) {
-			filter = "12";
-		}
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {		
+		filter = (pos + 5) + "";
 	}
 	
 	public void onClick(View view) {
 		Intent data = new Intent();
 		data.putExtra("class", filter);
-		setResult(RESULT_OK);
+		setResult(RESULT_OK, data);
 		finish();
 	}
 }

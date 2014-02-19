@@ -85,18 +85,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	}
 	
 	public void onClick(View v) {
-		/*if(v instanceof Button) {
-			int index;
-			
-			TableRow viewRow = (TableRow) v.getParent();
-			TableLayout rowTable = (TableLayout) viewRow.getParent();
-			
-			index = rowTable.indexOfChild(viewRow);
-			Lesson clickedLesson = displayed.get(index);
-			Intent intent = new Intent(this, DetailsActivity.class);
-			intent.putExtra("lesson", clickedLesson);
-			startActivity(intent);
-		} else */if (v instanceof TextView) {
+		if (v instanceof TextView) {
 			int index;
 			
 			TableRow viewRow = (TableRow) v.getParent();
@@ -155,67 +144,6 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				Intent intent = new Intent(this, ClassChooser.class);
 				startActivityForResult(intent, CLASSCHOOSER_REQUEST);
 				return true;
-				/*case R.id.class5:
-					filter = "5";
-					GSGSave.lastFilter = filter;
-					updateList(schedule.getByClass(filter));
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class6:
-					filter = "6";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class7:
-					filter = "7";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class8:
-					filter = "8";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class9:
-					filter = "9";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class10:
-					filter = "10";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class11:
-					filter = "11";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.class12:
-					filter = "12";
-					updateList(schedule.getByClass(filter));
-					GSGSave.lastFilter = filter;
-					this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-					this.menu.findItem(R.id.lastfiltered).setVisible(true);
-					return true;
-				case R.id.lastfiltered:
-					updateList(schedule.getByClass(GSGSave.lastFilter));
-					filter = GSGSave.lastFilter;
-					
-					return true;*/
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
 				filter = "";
@@ -226,20 +154,6 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	/*public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == FILTER_REQUEST) {
-			if(resultCode == RESULT_OK) {
-				System.out.println("Got the following text from filter activity: " + data.getStringExtra("classname"));
-				updateList(schedule.getByClass(data.getStringExtra("classname")));
-				filter = data.getStringExtra("classname");
-				GSGSave.lastFilter = filter;
-				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-			} else if(resultCode == RESULT_CANCELED) {
-				System.out.println("Aborted filter activity.");
-			}
-		}
-	}*/
 	
 	public void updateSchedule() {
 		Document page = HTMLHandler.downloadPage(getString(R.string.pageurl));

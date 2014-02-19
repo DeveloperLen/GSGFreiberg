@@ -68,15 +68,9 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				lesson.setText(cancel.lesson);
 				lesson.setOnClickListener(this);
 				
-				//Button details = (Button) this.getLayoutInflater().inflate(R.layout.detailsbuttontemplate, null);
-				//details.setText(R.string.details);
-				//details.setOnClickListener(this);
-				//details.setVisibility(1);
-				
 				row.addView(date);
 				row.addView(classname);
 				row.addView(lesson);
-				//row.addView(details);
 				
 				table.addView(row);
 			}

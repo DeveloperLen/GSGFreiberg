@@ -4,18 +4,7 @@
 	<item android:id="@+id/teacherlist" android:title="@string/teacherlist"></item>
     <item android:id="@+id/filtermenu" android:title="@string/filtermenu">
         <menu>
-            <item android:id="@+id/filterbyclass" android:title="@string/filterbyclass">
-				<menu>
-					<item android:id="@+id/class5" android:title="@string/class5"/>
-					<item android:id="@+id/class6" android:title="@string/class6"/>
-					<item android:id="@+id/class7" android:title="@string/class7"/>
-					<item android:id="@+id/class8" android:title="@string/class8"/>
-					<item android:id="@+id/class9" android:title="@string/class9"/>
-					<item android:id="@+id/class10" android:title="@string/class10"/>
-					<item android:id="@+id/class11" android:title="@string/class11"/>
-					<item android:id="@+id/class12" android:title="@string/class12"/>
-				</menu>
-			</item>
+            <item android:id="@+id/filterbyclass" android:title="@string/filterbyclass"/>
             <item android:id="@+id/lastfiltered" android:title="@string/lastfiltered"/>
             <item android:id="@+id/disablefilter" android:title="@string/disablefilter"/>
         </menu>

@@ -23,6 +23,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.setTitle(R.string.gsgActivityTitle);
 		
 		GSGSave.load(this);
 		
@@ -108,6 +109,7 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			if (resultCode == RESULT_OK) {
 				filter = data.getStringExtra("class");
 				GSGSave.lastFilter = filter;
+				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
 				updateList(schedule.getByClass(filter));
 			}
 		}

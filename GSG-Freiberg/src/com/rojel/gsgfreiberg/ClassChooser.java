@@ -33,7 +33,7 @@ public class ClassChooser extends Activity implements OnClickListener, OnItemSel
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.classChosserSpinner, android.R.layout.simple_spinner_dropdown_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		classChooserSpinner.setAdapter(adapter);
-		classChooserSpinner.setSelection(0);
+		classChooserSpinner.setSelection(GSGFreibergActivity.filter.equalsIgnoreCase("")? 0 : (Integer.parseInt(GSGFreibergActivity.filter)-5));
 		
 	}
 	

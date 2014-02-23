@@ -8,6 +8,7 @@ import android.view.View.*;
 import android.widget.*;
 import java.util.*;
 import org.jsoup.nodes.*;
+import android.app.AlertDialog;
 
 public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public static final int FILTER_REQUEST = 1;

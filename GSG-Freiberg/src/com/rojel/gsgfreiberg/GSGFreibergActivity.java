@@ -14,11 +14,13 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public static final int FILTER_REQUEST = 1;
 	public static final int DETAIL_REQUEST = 2048;
 	public static final int CLASSCHOOSER_REQUEST = 454864948;
+	public static final int TEACHERCHOOSER_REQUEST = 7238598;
 	public static View tableView;
 	
 	public Schedule schedule;
 	public ArrayList<Lesson> displayed;
 	public static String filter;
+	public static String filterTeacher;
 	
 	public Menu menu;
 	
@@ -31,7 +33,9 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		updateSchedule();
 		
 		updateList(schedule.getByClass(""));
+		updateList(schedule.getByTeacher(""));
 		filter = "";
+		filterTeacher = "";
 	}
 	
 	protected void onStop() {
@@ -111,7 +115,17 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 				filter = data.getStringExtra("class");
 				GSGSave.lastFilter = filter;
 				this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
+				this.menu.findItem(R.id.lastfiltered).setVisible(true);
 				updateList(schedule.getByClass(filter));
+			}
+		}
+		if (requestCode == TEACHERCHOOSER_REQUEST){
+			if(resultCode == RESULT_OK){
+				filterTeacher = data.getStringExtra("teacher");
+				GSGSave.lastFilterTeacher = filterTeacher;
+				this.menu.findItem(R.id.lastfilteredteacher).setTitle(getString(R.string.lastfilteredteacher) + " " + GSGSave.lastFilterTeacher);
+				this.menu.findItem(R.id.lastfilteredteacher).setVisible(true);
+				updateList(schedule.getByTeacher(filterTeacher));
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
@@ -123,10 +137,14 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		this.menu = menu;
 		if (!GSGSave.lastFilter.equalsIgnoreCase("")) {
 			this.menu.findItem(R.id.lastfiltered).setTitle(getString(R.string.lastfiltered) + " " + GSGSave.lastFilter);
-		} else {
+		}else{
 			this.menu.findItem(R.id.lastfiltered).setVisible(false);
 		}
-		
+		if(!(GSGSave.lastFilterTeacher.equalsIgnoreCase(""))){
+			this.menu.findItem(R.id.lastfilteredteacher).setTitle(getString(R.string.lastfilteredteacher) + " " + GSGSave.lastFilterTeacher);
+		}else{
+			this.menu.findItem(R.id.lastfilteredteacher).setVisible(false);
+		}
 		return true;
 	}
 	
@@ -134,18 +152,28 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		switch (item.getItemId()) {
 			case R.id.update:
 				updateSchedule();
-				updateList(schedule.getByClass(filter));
 				System.out.println(filter);
+				return true;
+			case R.id.lastfiltered:
+				updateList(schedule.getByClass(GSGSave.lastFilter));
+				return true;
+			case R.id.lastfilteredteacher:
+				updateList(schedule.getByTeacher(GSGSave.lastFilterTeacher));
 				return true;
 			case R.id.filterbyclass:
 				Intent intent = new Intent(this, ClassChooser.class);
 				startActivityForResult(intent, CLASSCHOOSER_REQUEST);
+				return true;
+			case R.id.filterbyteacher:
+				Intent intentTeacher = new Intent(this, TeacherChooser.class);
+				startActivityForResult(intentTeacher, TEACHERCHOOSER_REQUEST);
 				return true;
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
 				filter = "";
 				GSGSave.lastFilter = filter;
 				this.menu.findItem(R.id.lastfiltered).setVisible(true);
+				this.menu.findItem(R.id.lastfilteredteacher).setVisible(true);
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);

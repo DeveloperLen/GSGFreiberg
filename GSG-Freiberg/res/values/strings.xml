@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="appname">GSGFreiberg</string>
 	<string name="gsgActivityTitle">Vertretungsplan des GSG-Freiberg</string>
 	<string name="detailsPopup">Details:</string>
@@ -16,6 +15,7 @@
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
     <string name="filterbyclass">Filtern nach Klasse</string>
+	<string name="filterbyteacher">Filtern nach Lehrer</string>
     <string name="enterclass">&quot;Bitte gib die Klasse(nstufe) ein:&quot;</string>
     <string name="choose">Übernehmen</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
@@ -23,21 +23,108 @@
     <string name="disablefilter">Filter aufheben</string>
     <string name="filename">gsgfreiberg.dat</string>
     <string name="connectionproblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
-    <string name="lastfiltered">Zuletzt gefiltert nach: </string>
+    <string name="lastfiltered">Zuletzt gefilterte Stunde: </string>
+	<string name="lastfilteredteacher">Zuletzt gefilterte/r Lehrer/in: </string>
     <string name="update">Aktualisieren</string>
     <string name="filtermenu">Filtern</string>
     <string name="nocancels">Für deine Auswahl sind zurzeit keine Ausfälle eingetragen.</string>
-	<string name="teacherlist">Lehrerliste</string>
+	<string name="teacherChooserTitle">Lehrerkürzel eingeben:</string>
 	<string name="classChooserTitle">Klassenstufe wählen:</string>
+	<string name="teacherHint">Lehrer</string>
+	<string name="warningTeacherChooser">Bitte beachte, dass auf Groß- und Kleinschreibung geachtet wird!</string>
 	<string-array name="classChosserSpinner">
-		<item >Klasse 5</item>
-		<item >Klasse 6</item>
-		<item >Klasse 7</item>
-		<item >Klasse 8</item>
-		<item >Klasse 9</item>
-		<item >Klasse 10</item>
-		<item >Klasse 11</item>
-		<item >Klasse 12</item>
+		<item>Klasse 5</item>
+		<item>Klasse 6</item>
+		<item>Klasse 7</item>
+		<item>Klasse 8</item>
+		<item>Klasse 9</item>
+		<item>Klasse 10</item>
+		<item>Klasse 11</item>
+		<item>Klasse 12</item>
 	</string-array>
-
+	<string-array name="teacherChooserSpinner">
+		<item>Frau Anders (Ad)</item>
+		<item>Frau Arnold (Ar)</item>
+		<item>Herr Dr. Bannies (Ba)</item>
+		<item>Frau Beier (Be)</item>
+		<item>Frau Bräunling (Bl)</item>
+		<item>Frau Bucher (Bu)</item>
+		<item>Herr Czolbe (Cz)</item>
+		<item>Frau Czolbe (Cb)</item>
+		<item>Herr Docekal (Do)</item>
+		<item>Frau Duteloff (Dt)</item>
+		<item>Frau Fickert (Fi) </item>
+		<item>Frau Fietzke (Fk)</item>
+		<item>Frau Franke (Fr)</item>
+		<item>Frau Glöckner (Gl)</item>
+		<item>Frau Grabsch (Gr)</item>         
+		<item>Herr Gustmann (Gm)</item>         
+		<item>Frau Hengst (He)</item>         
+		<item>Herr Hofmann, T. (Hm)</item>      
+		<item>Frau Holfeld (Hd)</item>         
+		<item>Frau Holtmann (Ho)</item>      
+		<item>Frau Hötzel (Hö)</item>      
+		<item>Frau Ilius (Is)</item>   
+		<item>Frau Kaden (Ka)</item>      
+		<item>Herr Kilian (Kn)</item>       
+		<item>Frau Klinder (Kd)</item>        
+		<item>Herr Klingler (Ki)</item>  
+		<item>Frau Krause (Ks)</item>     
+		<item>Frau Kuhl (Ku)</item>       
+		<item>Frau Kühnert (Kü)</item>       
+		<item>Frau Läßker (Lk)</item>
+		<item>Frau Leibelt (Lb)</item>         
+		<item>Frau Liebscher (Ls)</item>  
+		<item>Frau Lommatzsch (Lo)</item> 
+		<item>Frau Lüdtke (Lü)</item>  
+		<item>Herr Martin (Mt)</item>
+		<item>Frau Matthes (Ma)</item>       
+		<item>Frau Meltke (Me)</item> 
+		<item>Frau Micke (Mi)</item>         
+		<item>Herr Minovsky (Mv)</item>         
+		<item>Frau Morgenroth (Mg)</item>         
+		<item>Frau Müller (Ml)</item>         
+		<item>Frau Müller-Palásti (Mr)</item>        
+		<item>Herr Münch (Mü)</item>        
+		<item>Frau Muster (Ms)</item>      
+		<item>Frau Nurse (Nu)</item>          
+		<item>Frau Oidow (Oi)</item>         
+		<item>Herr Peterhänsel (Pe)</item>        
+		<item>Herr Pezold (Pz)</item>        
+		<item>Frau Pönitz (Pö)</item>         
+		<item>Herr Preißler (Pr)</item>         
+		<item>Frau Rakette (Ra)</item>          
+		<item>Frau Rentsch (Rn)</item>         
+		<item>	Frau Richter, A. (Re)</item>         
+		<item>Frau Richter, J. (Ri)         </item>
+		<item>	Frau Richter, K. (Rc)        </item>
+		<item>Frau Riedel (Rl)       </item>
+		<item>Frau Salomon (Sa)        </item>
+		<item>Frau Schäfer (Sf)     </item> 
+		<item>	Frau Schilling (Sig)</item>      
+		<item>Frau Schmidt (Sc)</item>
+		<item>	Frau Schmieder (Sr)</item>        
+		<item>Herr Schubert (Su)      </item>
+		<item>Frau Schulze (Sz)         </item>
+		<item>Frau Schwarz (Sw)        </item>
+		<item>Herr Seidel (Sd)       </item>
+		<item>Frau Sohr (So)        </item>
+		<item>Frau Straube (Se)         </item>
+		<item>Frau Trinks (Ts)         </item>
+		<item>Frau Tröger (Tg)      </item>
+		<item>Herr Uhlig (Ul)       </item>
+		<item>	Frau Unterseher (Us)      </item>
+		<item>Herr Vogler (Vo)      </item>
+		<item>Frau Vollmer (Vr)        </item>
+		<item>Herr Wagner, A. (Wg)        </item>
+		<item>Frau Wagner, B. (Wa)       </item>
+		<item>Frau Walther (Wt)        </item>
+		<item>Frau Weber (Wb)       </item>
+		<item>Frau Weiland (We)       </item>
+		<item>Frau Wolf, A. (Wo)      </item>
+		<item>Frau Wolf, B. (Wl)       </item>
+		<item>Frau Wolf, G. (Wf)         </item>
+		<item>Frau Wünsch (Wü)        </item>
+		<item>Frau Zschoke (Ze)        </item>
+	</string-array>
 </resources>

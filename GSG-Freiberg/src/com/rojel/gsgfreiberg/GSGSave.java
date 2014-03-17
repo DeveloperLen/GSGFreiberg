@@ -15,6 +15,7 @@ import android.content.Context;
 public class GSGSave {
 	public static Document page;
 	public static String lastFilter;
+	public static String lastFilterTeacher;
 	
 	public static void load(Context context) {
 		GSGSave.File file = (File) loadObject(context.getString(R.string.filename), context);
@@ -26,6 +27,7 @@ public class GSGSave {
 		
 		page = Jsoup.parse(file.html);
 		lastFilter = file.lastFilter;
+		lastFilterTeacher = file.lastFilterTeacher;
 	}
 	
 	public static void save(Context context) {
@@ -33,6 +35,7 @@ public class GSGSave {
 		
 		file.html = page.html();
 		file.lastFilter = lastFilter;
+		file.lastFilterTeacher = lastFilterTeacher;
 		
 		saveObject(file, context.getString(R.string.filename), context);
 	}
@@ -70,5 +73,6 @@ public class GSGSave {
 		
 		public String html = "";
 		public String lastFilter = "";
+		public String lastFilterTeacher = "";
 	}
 }

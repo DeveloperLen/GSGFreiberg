@@ -16,6 +16,17 @@ public class Schedule implements Serializable {
 		schedule.add(lesson);
 	}
 	
+	public ArrayList<Lesson> getByTeacher(String teacher) {
+		ArrayList<Lesson> result = new ArrayList<Lesson>();
+		
+		for(Lesson lesson: schedule) {
+			if((lesson.teacher.startsWith(teacher)||lesson.newTeacher.startsWith(teacher))||(lesson.teacher.startsWith(teacher) && lesson.newTeacher.startsWith(teacher))){
+				result.add(lesson);
+			}
+		}
+		
+		return result;
+	}
 	public ArrayList<Lesson> getByClass(String classname) {
 		ArrayList<Lesson> result = new ArrayList<Lesson>();
 		
@@ -29,9 +40,5 @@ public class Schedule implements Serializable {
 		}
 		
 		return result;
-	}
-	
-	public int size() {
-		return schedule.size();
 	}
 }

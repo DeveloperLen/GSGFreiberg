@@ -3,13 +3,13 @@
     <item android:id="@+id/update" 
 		  android:title="@string/update"
 		  android:icon="@drawable/ic_action_refresh"
-		  android:showAsAction="ifRoom"></item>
-	<item android:id="@+id/teacherlist" android:title="@string/teacherlist"></item>
+		  android:showAsAction="ifRoom|withText"></item>
     <item android:id="@+id/filtermenu" android:title="@string/filtermenu">
         <menu>
-            <item android:id="@+id/filterbyclass" 				
-				android:title="@string/filterbyclass"/>
+            <item android:id="@+id/filterbyclass" android:title="@string/filterbyclass"/>
+			<item android:id="@+id/filterbyteacher" android:title="@string/filterbyteacher"/>
             <item android:id="@+id/lastfiltered" android:title="@string/lastfiltered"/>
+			<item android:id="@+id/lastfilteredteacher" android:title="@string/lastfilteredteacher"/>
             <item android:id="@+id/disablefilter" android:title="@string/disablefilter"/>
         </menu>
     </item>

@@ -24,7 +24,6 @@ public class GSGSave {
 			file = new GSGSave.File();
 			saveObject(file, context.getString(R.string.filename), context);
 		}
-		
 		page = Jsoup.parse(file.html);
 		lastFilter = file.lastFilter;
 		lastFilterTeacher = file.lastFilterTeacher;

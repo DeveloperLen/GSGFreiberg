@@ -6,9 +6,9 @@ import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import java.io.*;
 import java.util.*;
 import org.jsoup.nodes.*;
-import android.app.AlertDialog;
 
 public class GSGFreibergActivity extends Activity implements OnClickListener {
 	public static final int FILTER_REQUEST = 1;
@@ -28,12 +28,16 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		this.setTitle(R.string.gsgActivityTitle);
 		
-		GSGSave.load(this);
+		try{
+			GSGSave.load(this);
 		
-		updateSchedule();
+			updateSchedule();
 		
-		updateList(schedule.getByClass(""));
-		updateList(schedule.getByTeacher(""));
+			updateList(schedule.getByClass(""));
+			updateList(schedule.getByTeacher(""));
+		}catch (Exception e){
+			Toast.makeText(this,R.string.nointernet, Toast.LENGTH_LONG).show();
+		}
 		filter = "";
 		filterTeacher = "";
 	}
@@ -171,9 +175,10 @@ public class GSGFreibergActivity extends Activity implements OnClickListener {
 			case R.id.disablefilter:
 				updateList(schedule.getByClass(""));
 				filter = "";
-				GSGSave.lastFilter = filter;
-				this.menu.findItem(R.id.lastfiltered).setVisible(true);
-				this.menu.findItem(R.id.lastfilteredteacher).setVisible(true);
+				return true;
+			case R.id.information:
+				Intent info = new Intent(this, InformationActivity.class);
+				startActivity(info);				
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);

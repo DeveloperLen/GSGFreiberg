@@ -13,4 +13,5 @@
             <item android:id="@+id/disablefilter" android:title="@string/disablefilter"/>
         </menu>
     </item>
+	<item android:id="@+id/information" android:title="@string/information"/>
 </menu>

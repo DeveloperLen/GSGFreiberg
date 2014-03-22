@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<TextView
+		android:layout_height="40dp"
+		android:text="Sekretäriat Haus Dürer"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:id="@+id/informationDuerer"
+		android:layout_centerVertical="false"
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="20dp"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_call"
+		android:layout_toRightOf="@id/informationDuerer"
+		android:layout_marginLeft="62dp"
+		android:id="@+id/informationCallDuerer"/>
+
+	<TextView
+		android:layout_height="40dp"
+		android:text="Sekretäriat Haus Albertinum"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/informationDuerer"
+		android:layout_marginLeft="20dp"
+		android:id="@+id/informationAlbertinum"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_call"
+		android:layout_toRightOf="@id/informationAlbertinum"
+		android:layout_marginTop="40dp"
+		android:layout_marginLeft="10dp"
+		android:id="@+id/informationCallAlbertinum"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_email"
+		android:layout_toRightOf="@id/informationCallDuerer"
+		android:id="@+id/informationMailDuerer"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_email"
+		android:layout_toRightOf="@id/informationCallAlbertinum"
+		android:layout_marginTop="40dp"
+		android:id="@+id/informationMailAlbertinum"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_web_site"
+		android:layout_toRightOf="@id/informationMailAlbertinum"
+		android:layout_marginTop="40dp"
+		android:id="@+id/informationWebAlbertinum"/>
+
+	<ImageButton
+		android:layout_height="40dp"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="40dp"
+		android:src="@drawable/ic_action_web_site"
+		android:id="@+id/informationWebDuerer"
+		android:layout_toRightOf="@id/informationMailDuerer"/>
+
+</RelativeLayout>
+

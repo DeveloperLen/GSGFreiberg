@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="appname">GSGFreiberg</string>
-	<string name="nointernet">Leider hast du zurzeit kein Internet, bitte starte die App neu, wenn du mit dem Internet verbunden bist.</string>
-	<string name="gsgActivityTitle">Vertretungsplan des GSG-Freiberg</string>
-	<string name="detailsPopup">Details:</string>
+    <string name="nointernet">Leider hast du zurzeit kein Internet, bitte starte die App neu, wenn du mit dem Internet verbunden bist.</string>
+    <string name="gsgActivityTitle">Vertretungsplan des GSG-Freiberg</string>
+    <string name="detailsPopup">Details:</string>
     <string name="pageurl">http://www.gsg-freiberg.de/fileadmin/user_upload/html/vertretungsplan/Plan_Schueler.htm</string>
     <string name="date">Datum: </string>
     <string name="day">Tag: </string>
@@ -16,7 +16,7 @@
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
     <string name="filterbyclass">Filtern nach Klasse</string>
-	<string name="filterbyteacher">Filtern nach Lehrer</string>
+    <string name="filterbyteacher">Filtern nach Lehrer</string>
     <string name="enterclass">&quot;Bitte gib die Klasse(nstufe) ein:&quot;</string>
     <string name="choose">Übernehmen</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
@@ -25,16 +25,16 @@
     <string name="filename">gsgfreiberg.dat</string>
     <string name="connectionproblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
     <string name="lastfiltered">Zuletzt gefilterte Klasse: </string>
-	<string name="lastfilteredteacher">Zuletzt gefilterte/r Lehrer/in: </string>
+    <string name="lastfilteredteacher">Zuletzt gefilterte/r Lehrer/in: </string>
     <string name="update">Aktualisieren</string>
     <string name="filtermenu">Filtern</string>
     <string name="nocancels">Für deine Auswahl sind zurzeit keine Ausfälle eingetragen.</string>
-	<string name="teacherChooserTitle">Lehrerkürzel eingeben:</string>
-	<string name="classChooserTitle">Klassenstufe wählen:</string>
-	<string name="teacherHint">Lehrer</string>
-	<string name="warningTeacherChooser">Bitte beachte, dass auf Groß- und Kleinschreibung geachtet wird!</string>
-	<string name="information">Informationen</string>
-	<string-array name="classChosserSpinner">
+    <string name="teacherChooserTitle">Lehrerkürzel eingeben:</string>
+    <string name="classChooserTitle">Klassenstufe wählen:</string>
+    <string name="teacherHint">Lehrer</string>
+    <string name="warningTeacherChooser">Bitte beachte, dass auf Groß- und Kleinschreibung geachtet wird!</string>
+    <string name="information">Informationen</string>
+    <string-array name="classChosserSpinner">
 		<item>Klasse 5</item>
 		<item>Klasse 6</item>
 		<item>Klasse 7</item>
@@ -43,8 +43,8 @@
 		<item>Klasse 10</item>
 		<item>Klasse 11</item>
 		<item>Klasse 12</item>
-	</string-array>
-	<string-array name="teacherChooserSpinner">
+    </string-array>
+    <string-array name="teacherChooserSpinner">
 		<item>Frau Anders (Ad)</item>
 		<item>Frau Arnold (Ar)</item>
 		<item>Herr Dr. Bannies (Ba)</item>
@@ -128,5 +128,5 @@
 		<item>Frau Wolf, G. (Wf)</item>
 		<item>Frau Wünsch (Wü)</item>
 		<item>Frau Zschoke (Ze)</item>
-	</string-array>
+    </string-array>
 </resources>

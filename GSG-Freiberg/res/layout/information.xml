@@ -6,7 +6,7 @@
 
 	<TextView
 		android:layout_height="40dp"
-		android:text="Sekretäriat Haus Dürer"
+		android:text="Sekretariat Haus Dürer"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="wrap_content"
 		android:id="@+id/informationDuerer"
@@ -25,7 +25,7 @@
 
 	<TextView
 		android:layout_height="40dp"
-		android:text="Sekretäriat Haus Albertinum"
+		android:text="Sekretariat Haus Albertinum"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="wrap_content"
 		android:layout_below="@id/informationDuerer"

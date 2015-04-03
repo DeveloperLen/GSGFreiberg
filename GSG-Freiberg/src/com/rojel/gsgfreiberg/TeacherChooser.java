@@ -18,9 +18,10 @@ public class TeacherChooser extends Activity implements OnClickListener{
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Util.chooseRightThemeDialog(this);
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.teacher_chooser);
-	
 		Button teacherButton = (Button) findViewById(R.id.teacherChooserButton);
 		teacherButton.setOnClickListener(this);
 		

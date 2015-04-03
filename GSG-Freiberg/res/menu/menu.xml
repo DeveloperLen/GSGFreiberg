@@ -7,11 +7,17 @@
     <item android:id="@+id/filtermenu" android:title="@string/filtermenu">
         <menu>
             <item android:id="@+id/filterbyclass" android:title="@string/filterbyclass"/>
-	    <item android:id="@+id/filterbyteacher" android:title="@string/filterbyteacher"/>
+			<item android:id="@+id/filterbyteacher" android:title="@string/filterbyteacher"/>
             <item android:id="@+id/lastfiltered" android:title="@string/lastfiltered"/>
-	    <item android:id="@+id/lastfilteredteacher" android:title="@string/lastfilteredteacher"/>
+			<item android:id="@+id/lastfilteredteacher" android:title="@string/lastfilteredteacher"/>
             <item android:id="@+id/disablefilter" android:title="@string/disablefilter"/>
         </menu>
     </item>
-    <item android:id="@+id/information" android:title="@string/information"/>
+	<item android:id="@+id/information" android:title="@string/information">
+		<menu>
+            <item android:id="@+id/informationschool" android:title="Schulinformationen"/>
+			<item android:id="@+id/informationteacher" android:title="Lehrerliste"/>
+        </menu>
+	</item>
+	<item android:id="@+id/settings" android:title="Einstellungen"/>
 </menu>

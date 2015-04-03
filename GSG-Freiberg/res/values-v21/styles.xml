@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="scheduleItem" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="Theme.GSGFreiberg" parent="@android:style/Theme.Material">
+		<item name="android:colorPrimary">#ba2221</item>
+		<item name="android:colorPrimaryDark">#88211A</item>
+		<item name="android:navigationBarColor">#ba2221</item>
+	</style>
+	<style name="Theme.GSGFreiberg.Light" parent="@android:style/Theme.Material.Light.DarkActionBar">
+		<item name="android:colorPrimary">#ba2221</item>
+		<item name="android:colorPrimaryDark">#88211A</item>
+		<item name="android:navigationBarColor">#ba2221</item>
+	</style>
+	<style name="Theme.GSGFreiberg.Dialog" parent="@android:style/Theme.Material.Dialog">
+	</style>
+	<style name="Theme.GSGFreiberg.Dialog.Light" parent="@android:style/Theme.Material.Light.Dialog">
+	</style>
+</resources>

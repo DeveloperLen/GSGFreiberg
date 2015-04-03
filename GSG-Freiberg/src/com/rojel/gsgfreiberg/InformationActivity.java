@@ -2,6 +2,7 @@ package com.rojel.gsgfreiberg;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.*;
 import android.net.*;
 import android.os.*;
 import android.view.*;
@@ -15,6 +16,9 @@ public class InformationActivity extends Activity implements OnClickListener
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
+		
+		Util.chooseRightThemeDialog(this);
+		
 		setContentView(R.layout.information);
 		
 		ImageButton callDuerer = (ImageButton) findViewById(R.id.informationCallDuerer);
@@ -23,6 +27,25 @@ public class InformationActivity extends Activity implements OnClickListener
 		ImageButton mailAlbertinum = (ImageButton) findViewById(R.id.informationMailAlbertinum);
 		ImageButton webDuerer = (ImageButton) findViewById(R.id.informationWebDuerer);	
 		ImageButton webAlbertinum = (ImageButton) findViewById(R.id.informationWebAlbertinum);
+		if(GSGFreibergActivity.theme_type.equalsIgnoreCase("holo_dark")){
+			setTheme(R.style.Theme_GSGFreiberg_Dialog);
+		}else{
+			setTheme(R.style.Theme_GSGFreiberg_Dialog_Light);
+			callDuerer.setImageResource(R.drawable.ic_action_call_dark);
+			callAlbertinum.setImageResource(R.drawable.ic_action_call_dark);
+			mailDuerer.setImageResource(R.drawable.ic_action_email_dark);
+			mailAlbertinum.setImageResource(R.drawable.ic_action_email_dark);
+			webAlbertinum.setImageResource(R.drawable.ic_action_web_site_dark);
+			webDuerer.setImageResource(R.drawable.ic_action_web_site_dark);
+		}
+		
+		PackageManager pm = getPackageManager();
+		if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+			callDuerer.setAlpha(0);
+			callAlbertinum.setAlpha(0);
+			callDuerer.setEnabled(false);
+			callAlbertinum.setEnabled(false);
+		}
 		
 		callDuerer.setOnClickListener(this);
 		callAlbertinum.setOnClickListener(this);

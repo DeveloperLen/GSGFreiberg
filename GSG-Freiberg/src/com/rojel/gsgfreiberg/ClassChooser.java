@@ -16,12 +16,16 @@ public class ClassChooser extends Activity implements OnClickListener, OnItemSel
 	@Override
 	public void onNothingSelected(AdapterView<?> p1) {
 		filter = "5";
+		setTitle("Gewählte Klasse: Klasse 5");
 	}
 	
 	public String filter = "";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+		Util.chooseRightThemeDialog(this);
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.class_chooser);
 		
@@ -34,11 +38,11 @@ public class ClassChooser extends Activity implements OnClickListener, OnItemSel
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		classChooserSpinner.setAdapter(adapter);
 		classChooserSpinner.setSelection(GSGFreibergActivity.filter.equalsIgnoreCase("")? 0 : (Integer.parseInt(GSGFreibergActivity.filter)-5));
-		
 	}
 	
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {		
 		filter = (pos + 5) + "";
+		setTitle("Gewählte Klasse: Klasse " + (pos +5));
 	}
 	
 	public void onClick(View view) {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory 
+        android:title="Aktualisierung"
+        android:key="pref_key_update">
+        <CheckBoxPreference
+            android:key="pref_key_auto_update"
+            android:summary="Beim Starten der App wird automatisch der Vertretungsplan aktualisiert."
+            android:title="Automatisch Updaten"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+	<PreferenceCategory
+		android:key="pref_key_filter"
+		android:title="Filterung">
+		<CheckBoxPreference
+			android:key="pref_key_auto_sort_class"
+			android:summary="Beim Starten der App wird automatisch nach der angegeben Klasse sortiert."
+			android:title="Automatisch Sortieren"/>
+		<ListPreference
+			android:dependency="pref_key_auto_sort_class"
+			android:key="pref_key_class"
+			android:title="Klasse auswählen"
+			android:defaultValue="5"
+			android:entries="@array/classChooseSettingsEntries"
+			android:entryValues="@array/classChooseSettingsValues"/>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:key="pref_key_swag"
+		android:title="Style">
+		<ListPreference
+			android:key="pref_key_theme"
+			android:title="Theme auswählen"
+			android:summary="Die Veränderung haben evtl. erst Wirkung nach dem Neustart der App!"
+			android:entries="@array/prefThemeEntries"
+			android:entryValues="@array/prefThemeEntryValues"
+			android:defaultValue="holo_dark"/>
+	</PreferenceCategory>
+</PreferenceScreen>
+

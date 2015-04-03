@@ -24,14 +24,13 @@ public class GSGSave {
 			file = new GSGSave.File();
 			saveObject(file, context.getString(R.string.filename), context);
 		}
-		page = Jsoup.parse(file.html);
+		page = Jsoup.parse(file.html, "ANSI");
 		lastFilter = file.lastFilter;
 		lastFilterTeacher = file.lastFilterTeacher;
 	}
 	
-	public static void save(Context context) {
+	public static void save(Context context) {	
 		GSGSave.File file = new GSGSave.File();
-		
 		file.html = page.html();
 		file.lastFilter = lastFilter;
 		file.lastFilterTeacher = lastFilterTeacher;

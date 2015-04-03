@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="scheduleItem" parent="@android:style/TextAppearance.Medium">
+	<style name="scheduleItem" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingBottom">10dp</item>
     </style>
-    <style name="scheduleButton" parent="@android:style/Widget.Holo.Button">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:layout_gravity">right</item>
+    <style name="Theme.GSGFreiberg" parent="@android:style/Theme.Holo">
+		<item name="android:popupMenuStyle">@style/PopupMenu.GSGFreiberg</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.GSGFreiberg</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.GSGFreiberg</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.GSGFreiberg</item>
+        <item name="android:actionBarStyle">@style/Widget.ActionBar.Solid.GSGFreiberg</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_gsgfreiberg</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_gsgfreiberg</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.GSGFreiberg</item>
+		<item name="android:actionOverflowButtonStyle">@style/Widget.GSGFreiberg.ActionButton.Overflow</item>
+	</style>
+	<style name="Theme.GSGFreiberg.Light" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+		<item name="android:actionBarItemBackground">@drawable/selectable_background_gsgfreiberg</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.GSGFreiberg</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.GSGFreiberg</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.GSGFreiberg</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.GSGFreiberg</item>
+        <item name="android:actionBarStyle">@style/Widget.ActionBar.Solid.GSGFreiberg</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_gsgfreiberg</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_gsgfreiberg</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.GSGFreiberg</item>
+		<item name="android:actionOverflowButtonStyle">@style/Widget.GSGFreiberg.ActionButton.Overflow</item>
+	</style>
+	<style name="Theme.GSGFreiberg.Dialog" parent="@android:style/Theme.Holo.Dialog">
+	</style>
+	<style name="Theme.GSGFreiberg.Dialog.Light" parent="@android:style/Theme.Holo.Light.Dialog">
+	</style>
+	
+    <style name="Widget.ActionBar.Solid.GSGFreiberg" parent="@android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_gsgfreiberg</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_gsgfreiberg</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_gsgfreiberg</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.GSGFreiberg</item>
     </style>
+
+    <style name="Widget.ActionBar.Transparent.GSGFreiberg" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_gsgfreiberg</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.GSGFreiberg</item>
+    </style>
+
+    <style name="PopupMenu.GSGFreiberg" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_gsgfreiberg</item>	
+    </style>
+
+    <style name="DropDownListView.GSGFreiberg" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_gsgfreiberg</item>
+    </style>
+
+    <style name="ActionBarTabStyle.GSGFreiberg" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_gsgfreiberg</item>
+    </style>
+
+    <style name="DropDownNav.GSGFreiberg" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_gsgfreiberg</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_gsgfreiberg</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_gsgfreiberg</item>
+    </style>
+    
+    <style name="ProgressBar.GSGFreiberg" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_gsgfreiberg</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.GSGFreiberg" parent="@android:style/Widget.Holo.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_gsgfreiberg</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.GSGFreiberg.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.GSGFreiberg</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.GSGFreiberg</item>
+    </style>
+	
+	<style name="Widget.GSGFreiberg.ActionButton.Overflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
+		<item name="android:src">@drawable/ic_action_expand</item>
+	</style>
 </resources>

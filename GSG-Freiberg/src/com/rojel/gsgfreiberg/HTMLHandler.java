@@ -14,6 +14,7 @@ import org.jsoup.select.Elements;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import java.nio.charset.*;
 
 public class HTMLHandler {
 	public static Document downloadPage(String url) {
@@ -92,10 +93,16 @@ public class HTMLHandler {
 			try {
 				page = Jsoup.connect(urls[0]).get();
 			} catch (IOException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 			
 			return page;
+		}
+
+		@Override
+		protected void onPostExecute(Document result)
+		{
+			super.onPostExecute(result);
 		}
 	}
 }

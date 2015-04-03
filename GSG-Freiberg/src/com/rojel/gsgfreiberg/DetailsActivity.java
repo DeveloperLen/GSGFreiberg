@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 public class DetailsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
+		Util.chooseRightThemeDialog(this);
+		
 		super.onCreate(savedInstanceState);
 		
 		setResult(RESULT_OK);

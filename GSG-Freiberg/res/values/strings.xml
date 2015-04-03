@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appname">GSGFreiberg</string>
-    <string name="nointernet">Leider hast du zurzeit kein Internet, bitte starte die App neu, wenn du mit dem Internet verbunden bist.</string>
-    <string name="gsgActivityTitle">Vertretungsplan des GSG-Freiberg</string>
-    <string name="detailsPopup">Details:</string>
+    <string name="appname">GSG-Freiberg 500-Jahr Edition</string>
+	<string name="nointernet">Leider hast du zurzeit kein Internet, bitte starte die App neu, wenn du mit dem Internet verbunden bist.</string>
+	<string name="gsgActivityTitle">Vertretungsplan des GSG-Freiberg</string>
+	<string name="detailsPopup">Details:</string>
     <string name="pageurl">http://www.gsg-freiberg.de/fileadmin/user_upload/html/vertretungsplan/Plan_Schueler.htm</string>
     <string name="date">Datum: </string>
     <string name="day">Tag: </string>
@@ -16,7 +16,7 @@
     <string name="room">Zimmer: </string>
     <string name="instead">statt: </string>
     <string name="filterbyclass">Filtern nach Klasse</string>
-    <string name="filterbyteacher">Filtern nach Lehrer</string>
+	<string name="filterbyteacher">Filtern nach Lehrer</string>
     <string name="enterclass">&quot;Bitte gib die Klasse(nstufe) ein:&quot;</string>
     <string name="choose">Übernehmen</string>
     <string name="cancel">&quot;Abbrechen&quot;</string>
@@ -25,16 +25,16 @@
     <string name="filename">gsgfreiberg.dat</string>
     <string name="connectionproblem">Es gab ein Problem mit der Internetverbindung. Es wird nun versucht, die letzte offline gespeicherte Version zu verwenden.</string>
     <string name="lastfiltered">Zuletzt gefilterte Klasse: </string>
-    <string name="lastfilteredteacher">Zuletzt gefilterte/r Lehrer/in: </string>
+	<string name="lastfilteredteacher">Zuletzt gefilterte/r Lehrer/in: </string>
     <string name="update">Aktualisieren</string>
     <string name="filtermenu">Filtern</string>
     <string name="nocancels">Für deine Auswahl sind zurzeit keine Ausfälle eingetragen.</string>
-    <string name="teacherChooserTitle">Lehrerkürzel eingeben:</string>
-    <string name="classChooserTitle">Klassenstufe wählen:</string>
-    <string name="teacherHint">Lehrer</string>
-    <string name="warningTeacherChooser">Bitte beachte, dass auf Groß- und Kleinschreibung geachtet wird!</string>
-    <string name="information">Informationen</string>
-    <string-array name="classChosserSpinner">
+	<string name="teacherChooserTitle">Lehrerkürzel eingeben:</string>
+	<string name="classChooserTitle">Klassenstufe wählen:</string>
+	<string name="teacherHint">Lehrer</string>
+	<string name="warningTeacherChooser">Bitte beachte, dass auf Groß- und Kleinschreibung geachtet wird!</string>
+	<string name="information">Informationen</string>
+	<string-array name="classChosserSpinner">
 		<item>Klasse 5</item>
 		<item>Klasse 6</item>
 		<item>Klasse 7</item>
@@ -43,8 +43,36 @@
 		<item>Klasse 10</item>
 		<item>Klasse 11</item>
 		<item>Klasse 12</item>
-    </string-array>
-    <string-array name="teacherChooserSpinner">
+	</string-array>
+	<string-array name="classChooseSettingsEntries">
+		<item>Klasse 5</item>
+		<item>Klasse 6</item>
+		<item>Klasse 7</item>
+		<item>Klasse 8</item>
+		<item>Klasse 9</item>
+		<item>Klasse 10</item>
+		<item>Klasse 11</item>
+		<item>Klasse 12</item>
+	</string-array>
+	<string-array name="classChooseSettingsValues">
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>11</item>
+		<item>12</item>
+	</string-array>
+	<string-array name="prefThemeEntries">
+		<item>Holo Dark</item>
+		<item>Holo Light mit dunkler ActionBar</item>
+	</string-array>
+	<string-array name="prefThemeEntryValues">
+		<item>holo_dark</item>
+		<item>holo_light_dark_actionbar</item>
+	</string-array>
+	<string-array name="teacherChooserSpinner">
 		<item>Frau Anders (Ad)</item>
 		<item>Frau Arnold (Ar)</item>
 		<item>Herr Dr. Bannies (Ba)</item>
@@ -97,15 +125,15 @@
 		<item>Herr Preißler (Pr)</item>         
 		<item>Frau Rakette (Ra)</item>          
 		<item>Frau Rentsch (Rn)</item>         
-		<item>Frau Richter, A. (Re)</item>         
+		<item>	Frau Richter, A. (Re)</item>         
 		<item>Frau Richter, J. (Ri)</item>
-		<item>Frau Richter, K. (Rc)</item>
-		<item>Frau Riedel (Rl) </item>
+		<item>	Frau Richter, K. (Rc)</item>
+		<item>Frau Riedel (Rl)</item>
 		<item>Frau Salomon (Sa)</item>
 		<item>Frau Schäfer (Sf)</item> 
-		<item>Frau Schilling (Sig)</item>      
+		<item>	Frau Schilling (Sig)</item>      
 		<item>Frau Schmidt (Sc)</item>
-		<item>Frau Schmieder (Sr)</item>        
+		<item>	Frau Schmieder (Sr)</item>        
 		<item>Herr Schubert (Su)</item>
 		<item>Frau Schulze (Sz)</item>
 		<item>Frau Schwarz (Sw)</item>
@@ -115,7 +143,7 @@
 		<item>Frau Trinks (Ts)</item>
 		<item>Frau Tröger (Tg)</item>
 		<item>Herr Uhlig (Ul)</item>
-		<item>Frau Unterseher (Us)</item>
+		<item>	Frau Unterseher (Us)</item>
 		<item>Herr Vogler (Vo)</item>
 		<item>Frau Vollmer (Vr)</item>
 		<item>Herr Wagner, A. (Wg)</item>
@@ -128,5 +156,5 @@
 		<item>Frau Wolf, G. (Wf)</item>
 		<item>Frau Wünsch (Wü)</item>
 		<item>Frau Zschoke (Ze)</item>
-    </string-array>
+	</string-array>
 </resources>

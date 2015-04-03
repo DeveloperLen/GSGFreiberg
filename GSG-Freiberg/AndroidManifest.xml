@@ -1,49 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rojel.gsgfreiberg"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="6"
+    android:versionName="1.2.3" >
 
     <uses-sdk 
         android:minSdkVersion="14" 
-        android:targetSdkVersion="14"/>
+        android:targetSdkVersion="21"/>
+	<uses-feature android:name="android.hardware.telephony" android:required="false"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/appname" >
+        android:label="@string/appname">
         <activity
+			android:theme="@android:style/Theme.Material"
             android:name=".GSGFreibergActivity"
             android:label="@string/appname"
-        	android:screenOrientation="portrait" >
+			android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity 
+			android:theme="@android:style/Theme.Material.Dialog"
             android:name="DetailsActivity" 
-            android:theme="@android:style/Theme.Holo.Dialog" 
 			android:label="@string/detailsPopup"
-            android:screenOrientation="portrait">
+			android:screenOrientation="portrait">
         </activity>
         <activity 
+			android:theme="@android:style/Theme.Material.Dialog"
             android:name=".ClassChooser"
-            android:theme="@android:style/Theme.Holo.Dialog"
             android:label="@string/classChooserTitle"
-            android:screenOrientation="portrait">
+			android:screenOrientation="portrait">
         </activity>
 		<activity
+			android:theme="@android:style/Theme.Material.Dialog"
 			android:name=".TeacherChooser"
-			android:theme="@android:style/Theme.Holo.Dialog"
 			android:label="@string/teacherChooserTitle"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
+			android:theme="@style/Theme.GSGFreiberg.Dialog"
 			android:name=".InformationActivity"
-			android:theme="@android:style/Theme.Holo.Dialog"
 			android:label="Informationen"
 			android:screenOrientation="portrait"/>
+		<activity
+			android:theme="@android:style/Theme.Material.Light.DarkActionBar"
+			android:name=".TeacherListActivity"
+			android:label="Lehrerliste"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:theme="@android:style/Theme.Material.Light.DarkActionBar"
+			android:name=".SettingsActivity"
+			android:label="Einstellungen"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:theme="@style/Theme.GSGFreiberg"
+			android:name=".TeacherScreenActivity"
+			android:label=""
+			androidscreenOrientation="portrait"/>
 	</application>
 </manifest>
